@@ -6,10 +6,31 @@ struct No
     int valor;
     No *proximo;
 };
-No *inserirInicio(No *inicio, int valor)
+
+No *inicio = NULL;
+
+void inserirInicio(No **inicio, int valor)
 {
-    // IMPLEMENTAR
+    // 1. Alocar um novo nó
+    No *novo = malloc(sizeof(No));
+
+    // 2. Verificar se malloc retornou NULL
+    if (novo == NULL)
+    {
+        printf("Erro, memoria insuficiente!\n");
+        exit(1);
+    }
+
+    // 3. Guardar o valor
+    novo->valor = valor;
+
+    // 4. Fazer novo->proximo apontar para o início atual
+    novo->proximo = *inicio;
+
+    // 5. Retornar o novo início
+    *inicio = novo;
 }
+
 void imprimirLista(No *inicio)
 {
     // IMPLEMENTAR
