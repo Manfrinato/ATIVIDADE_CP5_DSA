@@ -35,9 +35,16 @@ void imprimirLista(No *inicio)
 {
     // IMPLEMENTAR
 }
-int buscar(No *inicio, int valor)
-{
-    // IMPLEMENTAR
+int buscar(No *inicio, int valor) {
+    No *atual = inicio;
+    while (atual != NULL) {
+        if(valor == atual -> valor){
+            return 1;
+        }else{
+            atual = atual -> proximo;
+        }
+    }
+    return 0;
 }
 int main(void)
 {
@@ -58,7 +65,7 @@ int main(void)
         case 1:
             printf("Valor: ");
             scanf("%d", &valor);
-            inicio = inserirInicio(inicio, valor);
+            inserirInicio(&inicio, valor);
             break;
         case 2:
             imprimirLista(inicio);
@@ -66,7 +73,12 @@ int main(void)
         case 3:
             printf("Valor para buscar: ");
             scanf("%d", &valor);
-            // chamar buscar() e mostrar o resultado
+            if (buscar(inicio, valor)) {
+                printf("Valor encontrado!\n");
+            } else {
+                printf("Valor nao encontrado.\n");
+            }
+    break;
             break;
         case 4:
             // verificar se a lista está vazia e mostrar inicio->valor
