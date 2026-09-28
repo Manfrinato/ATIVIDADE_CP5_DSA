@@ -33,8 +33,16 @@ void inserirInicio(No **inicio, int valor)
 
 void imprimirLista(No *inicio)
 {
-    // IMPLEMENTAR
+    No *atual = inicio;
+
+    while (atual != NULL) {
+        printf("%d -> ", atual->valor);
+        atual = atual->proximo;
+    }
+
+    printf("NULL\n");
 }
+
 int buscar(No *inicio, int valor) {
     No *atual = inicio;
     while (atual != NULL) {
@@ -81,7 +89,12 @@ int main(void)
     break;
             break;
         case 4:
-            // verificar se a lista está vazia e mostrar inicio->valor
+            if (inicio == NULL) {
+                printf("Lista vazia.\n");
+            } else {
+                printf("Primeiro elemento: %d\n", inicio->valor);
+            }
+    break;
             break;
         case 0:
             break;
